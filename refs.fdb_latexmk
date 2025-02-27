@@ -1,0 +1,12 @@
+# Fdb version 4
+["pdflatex"] 1740651401.40005 "/home/suri/dev/school/cse195/refs.bib" "refs.pdf" "refs" 1740651401.52531 2
+  "/home/suri/dev/school/cse195/refs.bib" 1740651401.31147 357 36e43e4ca9af36c7388c37f60b91500b ""
+  "/nix/store/2m0g1wi2wzz208x340h3ag65gpv8dac1-texlive-2024-env/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1 3326158 145d018c41317191d05d96ef6ec3f246 ""
+  "/nix/store/2m0g1wi2wzz208x340h3ag65gpv8dac1-texlive-2024-env/share/texmf-var/web2c/texmf.cnf" 1 43655 797cfba6f5dc800861bbf120f7582a5c ""
+  "refs.aux" 1740651237.27808 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "refs.bib" 1740651401.31147 357 36e43e4ca9af36c7388c37f60b91500b ""
+  (generated)
+  "refs.aux"
+  "refs.log"
+  "refs.pdf"
+  (rewritten before read)

@@ -1,0 +1,5 @@
+PWD /home/suri/dev/school/cse195
+INPUT /nix/store/2m0g1wi2wzz208x340h3ag65gpv8dac1-texlive-2024-env/share/texmf-var/web2c/texmf.cnf
+INPUT /nix/store/2m0g1wi2wzz208x340h3ag65gpv8dac1-texlive-2024-env/share/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT /home/suri/dev/school/cse195/refs.bib
+OUTPUT refs.log
