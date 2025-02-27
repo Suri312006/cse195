@@ -31,7 +31,67 @@ Whats needed to integrate information control flow into Twizzler
 
 = Questions
 
+= Twizzler Notes
+
+- Objects
+    - maybe persistent data that is identified by unique 128 bit object ID
+        - used to provide a contiguous reigion of memory for semantically
+        related data
+    - mapped on demand
+    - sets access policy by programming the MMU
+        - what does program the MMU even mean?
+    - can expand objects to be accessible across systems
+
+    - created by the `create` syscall
+        - can take in a existing object id, in which twiz will use COW
+    - deleted using the `delete` syscall
+        - objects are ref coutned so once reference count reaches Zero, it can
+        be deleted
+
+- FOT
+    - exists inside each object
+    - allows increased ID space without increasing pointer size
+    - i think it allows for daisy chaining / russian dolling of objects
+    - each entry flags have rwx permissions, that are requests which will be
+    enforced by access control
+    - names are also allowed in FOT entries
+        - they say it enables late binding but im not really sure what that means
+        - names are passed onto a resolving function, allowing more flexibility
+        than unix paths
+    - managed by `libtwz`(unsure how up 2 date this is)
+    - `ptr_lea` (load effective address) virtual -> physical
+    - `ptr_store` virtual pointer -> persistent
+    - ptr translations are cached to improve performance
+
+
+
+- Views
+    - enable a program to map objects for access
+    - laid out like a page table
+    - each entry contains an object ID, and rwx permission bits
+    - upon page-fault, fault handler tries to handle by
+        - copy on write (unsure what this means)
+        - checking permissions (mentioned earlier)
+        - maps in an object
+        - if it cant handle, raises exception to user-space
+    - have 2 Syscalls
+        - `set_view`: allows a thread to change to a new view
+            - can let a thread execute a new program
+            - jump across programs to i.e. accomplish protected task
+        - `invalidate_view`: lets a thread inform kernel of changed / deleted entries
+
+
+- Security Contexts
+    - threads run in these
+    - contain a list of access rights for objects
+    - are persistent
+    - implemented via virtualization hardware which maps virtual memory to
+    intermediate object space which specifies access rights, which then -> physical
+    memory.
 // = Notes
+//
+//
+#align(center, text(size: 25pt)[Notes From Papers])
 
 = Capabilities for Information Flow
 
@@ -121,4 +181,5 @@ secure program in a language with capabilities
 - uses their inlined transformation to perform capability checks at runtime, with global state
   maps that hold "referential" capabilites infront of memory, protecting writes outward to
   public sinks. 
+
 
